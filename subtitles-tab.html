@@ -21,36 +21,51 @@
           <p id="demo"></p>
 
           <script>
-              // var str = window.location.href;
-              // var res = str.link(window.location.href);
-            // var  youtube_url = window.location.href;
-            // var  youtubeID = youtube_url.attr('src').match(/youtube\.com.*?v[\/=](\w+)/)[1];
-            var video_id = window.location.search.split('v=')[1];
-            var ampersandPosition = video_id.indexOf('&');
-            if(ampersandPosition != -1) {
-                video_id = video_id.substring(0, ampersandPosition);
-            }
+            // var str = window.location.href;
+            // var res = str.link(window.location.href);
+          // var  youtube_url = window.location.href;
+          // var  youtubeID = youtube_url.attr('src').match(/youtube\.com.*?v[\/=](\w+)/)[1];
+          function new_func() {
+              var video_id = window.location.search.split('v=')[1];
+              var ampersandPosition = video_id.indexOf('&');
+              if(ampersandPosition != -1) {
+                  video_id = video_id.substring(0, ampersandPosition);
+              }
 
-            var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open( "GET", "https://stage-api.videoken.com/api/v1/mmtocnew?youtube_id="+ video_id, false ); // false for synchronous request
-            xmlHttp.send( null );
-            var respo = xmlHttp.responseText;
-            var obj = JSON.parse(respo);
-            var keys = Object.keys(obj.mmtoc);
+              var xmlHttp = new XMLHttpRequest();
+              xmlHttp.open( "GET", "https://stage-api.videoken.com/api/v1/mmtocnew?youtube_id="+ video_id, false ); // false for synchronous request
+              xmlHttp.send( null );
+              var respo = xmlHttp.responseText;
+              var obj = JSON.parse(respo);
+              var keys = Object.keys(obj.mmtoc);
 
-            var i;
-            var text = "";
-            for (i = 0; i < keys.length; i++) {
-                // text += keys[i];
-                // text += " ";
-                // text += obj.mmtoc[keys[i]];
-                var str = obj.mmtoc[keys[i]];
-                text += str.link("/watch?v=" + video_id + "&t=" + keys[i]);
-                text += "<br>";
+              var i;
+              var text = "";
+              for (i = 0; i < keys.length; i++) {
+                  // text += keys[i];
+                  // text += " ";
+                  // text += obj.mmtoc[keys[i]];
+                  var str = obj.mmtoc[keys[i]];
+                  text += str.link("/watch?v=" + video_id + "&t=" + keys[i]);
+                  text += "<br>";
+              }
+            //     document.getElementById("demo").innerHTML = window.location.href + "\n hi";
+                document.getElementById("demo").innerHTML = text;
             }
-          //     document.getElementById("demo").innerHTML = window.location.href + "\n hi";
-              document.getElementById("demo").innerHTML = text;
-          </script>
+          function youtubePageChange()
+          {
+              // alert("watch1!");
+              new_func();
+
+              $('body').on('transitionend', function(event)
+              {
+                  if (event.target.id != 'progress') return false;
+                  // alert("watch2!");
+                  new_func();
+              });
+          }
+          youtubePageChange();
+        </script>
 
         </div>
       </div>

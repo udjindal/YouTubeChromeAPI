@@ -37,14 +37,14 @@ function initExtension() {
     $("#sub-message").fadeOut(3000);
     $("#sub-open-search-btn").css("display", "none");
   } else {
-    // $("#srt-upload-name").html("Click or drag & drop subtitle file here");
+    $("#srt-upload-name").html("Click or drag & drop subtitle file here");
 
-    // if ($("#sub-video").length) {
-    //   // console.log("Found existing #sub-video");
-    // } else {
-    //   $('video').attr('id', 'sub-video');
-    //   $("#sub-video").after("<span id='sub-info'></span>");
-    // }
+    if ($("#sub-video").length) {
+      // console.log("Found existing #sub-video");
+    } else {
+      $('video').attr('id', 'sub-video');
+      $("#sub-video").after("<span id='sub-info'></span>");
+    }
 
     if ($("#subtitle-button").length) {
       // console.log("Found existing #subtitle-button");
@@ -102,22 +102,22 @@ setInterval(function() {
     // console.log("Not a YouTube video page");
   }
 }, 1000);
-//
-// setInterval(function() {
-//   var newTag = $('.ytp-title-link.yt-uix-sessionlink').text().trim().split('.').join(' ');
-//   var newUrl = $('.ytp-title-link.yt-uix-sessionlink').attr("href");
-//   // console.log("Found tag: " + newTag)
-//   if (newTag && newUrl && $("#subtitle-button").length && $("#action-panel-subtitle").length) {
-//     if (newUrl != originalUrl) {
-//       console.log("Playing a new video with url: " + newUrl + " and tag: " + newTag);
-//       originalTag = newTag;
-//       originalUrl = newUrl;
-//       tag = newTag;
-//       if (autoLoad) {
-//         $('.subtitles').css("display", "block");
-//         $("#subtitle-button").click();
-//         $("#subtitle-button").addClass("clicked");
-//       }
-//     }
-//   }
-// }, 1000);
+
+setInterval(function() {
+  var newTag = $('.ytp-title-link.yt-uix-sessionlink').text().trim().split('.').join(' ');
+  var newUrl = $('.ytp-title-link.yt-uix-sessionlink').attr("href");
+  // console.log("Found tag: " + newTag)
+  if (newTag && newUrl && $("#subtitle-button").length && $("#action-panel-subtitle").length) {
+    if (newUrl != originalUrl) {
+      console.log("Playing a new video with url: " + newUrl + " and tag: " + newTag);
+      originalTag = newTag;
+      originalUrl = newUrl;
+      tag = newTag;
+      if (autoLoad) {
+        $('.subtitles').css("display", "block");
+        $("#subtitle-button").click();
+        $("#subtitle-button").addClass("clicked");
+      }
+    }
+  }
+}, 1000);
