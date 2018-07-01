@@ -4,7 +4,7 @@
     <div class="subtitle-panel">
       <div class="tabs-con">
         <button class="tab-title" id="upload-button" type="button" >
-          <span class="tab-title-name">Phrase Cloud</span>
+          <span class="tab-title-name">Table of Contents</span>
         </button>
 
       </div>
@@ -41,14 +41,20 @@
 
               var i;
               var text = "";
+              text += "<ol>"
               for (i = 0; i < keys.length; i++) {
                   // text += keys[i];
                   // text += " ";
                   // text += obj.mmtoc[keys[i]];
                   var str = obj.mmtoc[keys[i]];
+                  text += "<li style='font-size:120%;'>"
+                  //text += "<p >"
                   text += str.link("/watch?v=" + video_id + "&t=" + keys[i]);
-                  text += "<br>";
+                  //text += "</p>"
+                  text += "</li>"
+                  //text += "<br>";
               }
+              text += "</ol>"
             //     document.getElementById("demo").innerHTML = window.location.href + "\n hi";
                 document.getElementById("demo").innerHTML = text;
             }
@@ -72,4 +78,4 @@
     </div>
   </div>
 </div>
-<button class="yt-uix-button yt-uix-button-size-default yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup yt-uix-button-opacity yt-uix-close" type="button" id="subtitle-close" style="cursor:pointer;position: absolute;top: 10px;right: 3px;border: none;background:no-repeat url(//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflP4QDIj.webp) -230px -26px;background-size: 435px 425px;width: 10px;height: 10px;"></button>
+<!-- <button class="yt-uix-button yt-uix-button-size-default yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup yt-uix-button-opacity yt-uix-close" type="button" id="subtitle-close" style="cursor:pointer;position: absolute;top: 10px;right: 3px;border: none;background:no-repeat url(//s.ytimg.com/yts/imgbin/www-hitchhiker-2x-vflP4QDIj.webp) -230px -26px;background-size: 435px 425px;width: 10px;height: 10px;"></button> -->
